@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Menu, X, Moon, Sun, Github, Linkedin, Twitter, Mail, Phone, MapPin, Code, Globe, ShoppingCart, Smartphone, Database, Palette, Calendar, ExternalLink, Clock, CheckCircle, Users, Building2, Handshake, Instagram, TrendingUp, BarChart3 } from 'lucide-react';
+
 const Portfolio = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const currentYear = new Date().getFullYear();
+
   // Hero slides data
   const heroSlides = [
     {
@@ -32,54 +35,56 @@ const Portfolio = () => {
       image: "https://images.unsplash.com/photo-1556761175-4b46a572b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80"
     }
   ];
+
   // Services data
-const services = [
-  {
-    icon: <Globe className="w-8 h-8" />,
-    title: "Web Development",
-    description: "Custom websites and web applications built with modern technologies and best practices."
-  },
-  {
-    icon: <ShoppingCart className="w-8 h-8" />,
-    title: "E-commerce Solutions",
-    description: "Complete e-commerce platforms with payment integration, inventory management, and analytics."
-  },
-  {
-    icon: <TrendingUp className="w-8 h-8" />,
-    title: "Digital Marketing",
-    description: "SEO optimization, social media marketing, content strategy, and digital advertising campaigns to boost your online presence."
-  },
-  {
-    icon: <BarChart3 className="w-8 h-8" />,
-    title: "Data Analysis",
-    description: "Business intelligence, data visualization, predictive analytics, and insights generation to drive informed decision-making."
-  },
-  {
-    icon: <Database className="w-8 h-8" />,
-    title: "Backend Development",
-    description: "Robust APIs, databases, and server-side solutions using Node.js, Python, and cloud services."
-  },
-  {
-    icon: <Smartphone className="w-8 h-8" />,
-    title: "Mobile Development",
-    description: "Native and cross-platform mobile apps for iOS and Android using React Native and Flutter."
-  },
-  {
-    icon: <Palette className="w-8 h-8" />,
-    title: "UI/UX Design",
-    description: "User-centered design and prototyping for optimal user experience and interface design."
-  },
-  {
-    icon: <Code className="w-8 h-8" />,
-    title: "Technical Consulting",
-    description: "Technology strategy, code reviews, and technical guidance for your development projects."
-  },
-  {
-    icon: <Users className="w-8 h-8" />,
-    title: "Corporate & Private Training",
-    description: "Tailored training programs for individuals, teams, and organizations on modern web development, software engineering, and digital tools."
-  }
-];
+  const services = [
+    {
+      icon: <Globe className="w-8 h-8" />,
+      title: "Web Development",
+      description: "Custom websites and web applications built with modern technologies and best practices."
+    },
+    {
+      icon: <ShoppingCart className="w-8 h-8" />,
+      title: "E-commerce Solutions",
+      description: "Complete e-commerce platforms with payment integration, inventory management, and analytics."
+    },
+    {
+      icon: <TrendingUp className="w-8 h-8" />,
+      title: "Digital Marketing",
+      description: "SEO optimization, social media marketing, content strategy, and digital advertising campaigns to boost your online presence."
+    },
+    {
+      icon: <BarChart3 className="w-8 h-8" />,
+      title: "Data Analysis",
+      description: "Business intelligence, data visualization, predictive analytics, and insights generation to drive informed decision-making."
+    },
+    {
+      icon: <Database className="w-8 h-8" />,
+      title: "Backend Development",
+      description: "Robust APIs, databases, and server-side solutions using Node.js, Python, and cloud services."
+    },
+    {
+      icon: <Smartphone className="w-8 h-8" />,
+      title: "Mobile Development",
+      description: "Native and cross-platform mobile apps for iOS and Android using React Native and Flutter."
+    },
+    {
+      icon: <Palette className="w-8 h-8" />,
+      title: "UI/UX Design",
+      description: "User-centered design and prototyping for optimal user experience and interface design."
+    },
+    {
+      icon: <Code className="w-8 h-8" />,
+      title: "Technical Consulting",
+      description: "Technology strategy, code reviews, and technical guidance for your development projects."
+    },
+    {
+      icon: <Users className="w-8 h-8" />,
+      title: "Corporate & Private Training",
+      description: "Tailored training programs for individuals, teams, and organizations on modern web development, software engineering, and digital tools."
+    }
+  ];
+
   // Pricing data
   const pricingPlans = [
     {
@@ -141,18 +146,29 @@ const services = [
     }
   ];
 
-  // ── REAL PROJECTS FROM PORTFOLIO ──
+  // Recent Projects data
   const recentProjects = [
     {
       title: "Tender365 — Business Management Platform",
       client: "Tender365",
-      status: "completed",
-      duration: "4 months",
+      status: "Demo-Testing stage",
+      duration: "Demo-Testing stage",
       description: "A full-featured SaaS with POS, inventory management, invoice generation, sales reports, Bill of Quantity, customer management, referral wallet system, and multi-shop support built for Nigerian SMEs.",
       technologies: ["Laravel", "Tailwind CSS", "Alpine.js", "MySQL"],
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=640&q=80",
+      image: "/images/tender364.png",
+      completedDate: "Ongoing",
+      url: "http://app.tender365.lightleadachieversacademy.com/"
+    },
+     {
+      title: "Light Lead Achievers Academy",
+      client: "Light Lead Achievers Academy",
+      status: "completed",
+      duration: "2 months",
+      description: "Educational platform for a learning institution featuring course listings, admissions management, student resources, news updates, and event management.",
+      technologies: ["WordPress", "LMS Plugin", "PHP", "MySQL"],
+      image: "/images/lightlead-achievers.png",
       completedDate: "2025",
-      url: "#"
+      url: "https://lightleadachieversacademy.com"
     },
     {
       title: "WirelessNG — Broadband Service Provider",
@@ -161,7 +177,7 @@ const services = [
       duration: "2 months",
       description: "Full-stack website for a Nigerian broadband ISP featuring service plans, coverage information, customer portal, and online support.",
       technologies: ["WordPress", "PHP", "CSS3", "MySQL"],
-      image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=640&q=80",
+      image: "/images/wirelessng.png",
       completedDate: "2023",
       url: "https://wirelessng.com"
     },
@@ -172,7 +188,7 @@ const services = [
       duration: "2 months",
       description: "Online food ordering platform for a Nigerian restaurant with menu browsing, cart management, order placement, and an admin panel for order tracking.",
       technologies: ["Laravel", "PHP", "MySQL", "JavaScript"],
-      image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=640&q=80",
+      image: "/images/Naija Restaurant.png",
       completedDate: "2023",
       url: "https://naijarestaurant.com"
     },
@@ -183,7 +199,7 @@ const services = [
       duration: "1.5 months",
       description: "Corporate website for an ISP solutions company, showcasing internet packages, enterprise services, technical support, and client onboarding.",
       technologies: ["WordPress", "PHP", "Bootstrap", "MySQL"],
-      image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=640&q=80",
+      image: "/images/Alfao.png",
       completedDate: "2023",
       url: "https://alfaonetworks.com"
     },
@@ -194,40 +210,30 @@ const services = [
       duration: "2 months",
       description: "Corporate platform for an Oil & Gas and logistics company with service listings, project portfolio, team profiles, and a client inquiry system.",
       technologies: ["WordPress", "PHP", "MySQL", "CSS3"],
-      image: "https://images.unsplash.com/photo-1565008447742-97f6f38c985c?ixlib=rb-4.0.3&auto=format&fit=crop&w=640&q=80",
+      image: "/images/US Solution-Ltd.png",
       completedDate: "2022",
       url: "https://ussolutionltd.com"
     },
+   
     {
-      title: "Light Lead Achievers Academy",
-      client: "Light Lead Achievers Academy",
+      title: "Cnamopr Properties — Real Estate Platform",
+      client: "Cnamopr Properties",
       status: "completed",
-      duration: "2 months",
-      description: "Educational platform for a learning institution featuring course listings, admissions management, student resources, news updates, and event management.",
-      technologies: ["WordPress", "LMS Plugin", "PHP", "MySQL"],
-      image: "https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-4.0.3&auto=format&fit=crop&w=640&q=80",
-      completedDate: "2022",
-      url: "https://lightleadachieversacademy.com"
-    },
-    {
-      title: "Lagoon Suite — Hotel Website",
-      client: "Lagoon Suite",
-      status: "completed",
-      duration: "1.5 months",
-      description: "Hotel website for a Lagos hospitality brand featuring room showcases, booking inquiry forms, photo gallery, amenities highlights, and location info.",
-      technologies: ["WordPress", "PHP", "CSS3", "JavaScript"],
-      image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=640&q=80",
-      completedDate: "2022",
-      url: "https://lagoonsuite.com"
+      duration: "2.5 months",
+      description: "A modern real estate platform for a leading property company in Nigeria, featuring property listings, advanced search filters, virtual property tours, agent profiles, mortgage calculator, and a user-friendly inquiry system for buyers, sellers, and renters.",
+      technologies: ["WordPress", "PHP", "CSS3", "JavaScript", "Leaflet Maps"],
+      image: "/images/cnamoproperties.png",
+      completedDate: "2025",
+      url: "https://cnamoproperties.com"
     },
     {
       title: "Contact365 — Local Business Directory",
-      client: "Cnamopr Properties",
+      client: "Test-Page",
       status: "ongoing",
       duration: "3 months",
       description: "A Nigerian local business directory platform enabling users to discover and list businesses by category, location, and industry type.",
       technologies: ["React", "Node.js", "MongoDB", "Tailwind CSS"],
-      image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=640&q=80",
+      image: "/images/contact365.png",
       progress: "65%",
       url: "https://www.contact365.cnamoproperties.com"
     },
@@ -238,7 +244,7 @@ const services = [
       duration: "3 months",
       description: "An AI-powered platform helping job seekers practice and prepare for interviews with role-based question sets, mock sessions, and instant AI feedback.",
       technologies: ["Next.js", "Python", "AI/LLM", "Vercel"],
-      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=640&q=80",
+      image: "/images/interview-prep.png",
       progress: "70%",
       url: "https://interview-prep-lime.vercel.app"
     }
@@ -283,6 +289,7 @@ const services = [
       partnership: "Strategic Partner"
     }
   ];
+
   // Auto-slide functionality
   useEffect(() => {
     const timer = setInterval(() => {
@@ -290,10 +297,12 @@ const services = [
     }, 5000);
     return () => clearInterval(timer);
   }, [heroSlides.length]);
+
   // Handle theme toggle
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
   };
+
   // Navigation handler
   const scrollToSection = (sectionId) => {
     setActiveSection(sectionId);
@@ -303,9 +312,11 @@ const services = [
       element.scrollIntoView({ behavior: 'smooth' });
     }
   };
+
   const themeClasses = isDarkMode 
     ? 'bg-gray-900 text-white' 
     : 'bg-white text-gray-900';
+
   return (
     <div className={`min-h-screen transition-all duration-300 ${themeClasses}`}>
       {/* Navigation */}
@@ -338,6 +349,7 @@ const services = [
                 ))}
               </div>
             </div>
+
             {/* Theme Toggle & Mobile Menu */}
             <div className="flex items-center space-x-4">
               <button
@@ -362,6 +374,7 @@ const services = [
             </div>
           </div>
         </div>
+
         {/* Mobile Navigation */}
         {isMenuOpen && (
           <div className={`md:hidden ${isDarkMode ? 'bg-gray-800' : 'bg-gray-50'} border-t ${isDarkMode ? 'border-gray-700' : 'border-gray-200'}`}>
@@ -385,6 +398,7 @@ const services = [
           </div>
         )}
       </nav>
+
       {/* Hero Section with Slider */}
       <section id="home" className="relative h-screen overflow-hidden">
         <div className="absolute inset-0">
@@ -431,6 +445,7 @@ const services = [
             </div>
           ))}
         </div>
+
         {/* Slider Navigation */}
         <button
           onClick={() => setCurrentSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length)}
@@ -444,6 +459,7 @@ const services = [
         >
           <ChevronRight className="w-6 h-6" />
         </button>
+
         {/* Slide Indicators */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2">
           {heroSlides.map((_, index) => (
@@ -457,6 +473,7 @@ const services = [
           ))}
         </div>
       </section>
+
       {/* Services Section */}
       <section id="services" className={`py-20 ${isDarkMode ? 'bg-gray-800' : 'bg-gray-50'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -485,6 +502,7 @@ const services = [
           </div>
         </div>
       </section>
+
       {/* Recent Projects Section */}
       <section id="projects" className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -507,7 +525,7 @@ const services = [
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-48 object-cover"
+                    className="w-full h-48 object-cover object-center"
                   />
                   <div className="absolute top-4 right-4">
                     <span
@@ -600,6 +618,7 @@ const services = [
           </div>
         </div>
       </section>
+
       {/* Partners Section */}
       <section id="partners" className={`py-20 ${isDarkMode ? 'bg-gray-800' : 'bg-gray-50'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -732,6 +751,8 @@ const services = [
           </div>
         </div>
       </section>
+
+      {/* Pricing Section */}
       <section id="pricing" className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -796,9 +817,28 @@ const services = [
           </div>
         </div>
       </section>
+
       {/* Contact Section */}
       <section id="contact" className={`py-20 ${isDarkMode ? 'bg-gray-800' : 'bg-gray-50'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Profile Image & About */}
+          <div className="text-center mb-16">
+            <img
+              src="/images/KKK.jpg"
+              alt="Ochei Emeka Melvin"
+              className="w-40 h-40 md:w-48 md:h-48 rounded-full object-cover mx-auto mb-6 border-4 border-blue-600 shadow-2xl"
+            />
+            <h3 className="text-3xl font-bold mb-2">Ochei Emeka Melvin</h3>
+            <p className={`text-xl mb-4 ${isDarkMode ? 'text-blue-400' : 'text-blue-600'}`}>Full-Stack Software Engineer</p>
+            <p className={`max-w-2xl mx-auto ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+              I'm a passionate software engineer with expertise in building scalable web applications, 
+              mobile apps, and digital solutions. With years of experience in the Nigerian tech ecosystem, 
+              I've helped businesses transform their ideas into powerful digital products. 
+              Whether you need a corporate website, e-commerce platform, or custom software solution, 
+              I'm here to bring your vision to life.
+            </p>
+          </div>
+
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4">Get In Touch</h2>
             <p className={`text-xl ${isDarkMode ? 'text-gray-300' : 'text-gray-600'} max-w-3xl mx-auto`}>
@@ -949,12 +989,13 @@ const services = [
           </div>
         </div>
       </section>
+
       {/* Footer */}
       <footer className={`py-8 ${isDarkMode ? 'bg-gray-900 border-gray-700' : 'bg-white border-gray-200'} border-t`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <p className={isDarkMode ? 'text-gray-400' : 'text-gray-600'}>
-              © 2025 Ochei Emeka Melvin. All rights reserved.
+              © {currentYear} Ochei Emeka Melvin. All rights reserved.
             </p>
           </div>
         </div>
@@ -962,4 +1003,5 @@ const services = [
     </div>
   );
 };
+
 export default Portfolio;
