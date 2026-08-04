@@ -132,67 +132,6 @@ const Portfolio = () => {
     }
   ];
 
-  // Pricing data
-  const pricingPlans = [
-    {
-      title: "Professional/Corporate Website",
-      price: "₦150,000 - ₦300,000",
-      features: [
-        "Responsive Design",
-        "Content Management System",
-        "SEO Optimization",
-        "Contact Forms",
-        "Social Media Integration",
-        "Google Analytics",
-        "1 Year Support"
-      ],
-      popular: false
-    },
-    {
-      title: "E-commerce Website",
-      price: "₦500,000 - ₦5,000,000",
-      features: [
-        "Product Catalog",
-        "Shopping Cart & Checkout",
-        "Payment Gateway Integration",
-        "Inventory Management",
-        "Order Management",
-        "Customer Dashboard",
-        "Admin Panel",
-        "Analytics & Reports"
-      ],
-      popular: true
-    },
-    {
-      title: "Mobile Application",
-      price: "₦300,000 - ₦2,000,000",
-      features: [
-        "Cross-platform Development",
-        "Native Performance",
-        "Push Notifications",
-        "Offline Functionality",
-        "App Store Deployment",
-        "Backend Integration",
-        "User Authentication"
-      ],
-      popular: false
-    },
-    {
-      title: "Custom Solution",
-      price: "Let's Discuss",
-      features: [
-        "Custom Requirements",
-        "Scalable Architecture",
-        "Advanced Features",
-        "Third-party Integrations",
-        "Ongoing Support",
-        "Training & Documentation"
-      ],
-      popular: false,
-      isCustom: true
-    }
-  ];
-
   // Recent Projects data
   const recentProjects = [
     {
@@ -401,7 +340,7 @@ const Portfolio = () => {
             {/* Desktop Navigation */}
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-4">
-                {['home', 'services', 'projects', 'partners', 'pricing', 'contact'].map((item) => (
+                {['home', 'services', 'projects', 'partners', 'contact'].map((item) => (
                   <button
                     key={item}
                     onClick={() => scrollToSection(item)}
@@ -448,7 +387,7 @@ const Portfolio = () => {
         {isMenuOpen && (
           <div className={`md:hidden ${isDarkMode ? 'bg-gray-800' : 'bg-gray-50'} border-t ${isDarkMode ? 'border-gray-700' : 'border-gray-200'}`}>
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-              {['home', 'services', 'projects', 'partners', 'pricing', 'contact'].map((item) => (
+              {['home', 'services', 'projects', 'partners', 'contact'].map((item) => (
                 <button
                   key={item}
                   onClick={() => scrollToSection(item)}
@@ -823,72 +762,6 @@ const Portfolio = () => {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Pricing Section */}
-      <section id="pricing" className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">Pricing Plans</h2>
-            <p className={`text-xl ${isDarkMode ? 'text-gray-300' : 'text-gray-600'} max-w-3xl mx-auto`}>
-              Transparent pricing for quality software development services. Choose the package that fits your needs.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {pricingPlans.map((plan, index) => (
-              <div
-                key={index}
-                className={`relative p-8 rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl ${
-                  plan.popular
-                    ? 'border-2 border-blue-600 scale-105'
-                    : isDarkMode
-                    ? 'bg-gray-800 border border-gray-700'
-                    : 'bg-white border border-gray-200'
-                }`}
-              >
-                {plan.popular && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <span className="bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
-                      Most Popular
-                    </span>
-                  </div>
-                )}
-                
-                <div className="text-center mb-8">
-                  <h3 className="text-xl font-semibold mb-4">{plan.title}</h3>
-                  <div className="text-3xl font-bold text-blue-600 mb-2">{plan.price}</div>
-                </div>
-                
-                <ul className="space-y-3 mb-8">
-                  {plan.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-center">
-                      <div className="w-2 h-2 bg-blue-600 rounded-full mr-3"></div>
-                      <span className={isDarkMode ? 'text-gray-300' : 'text-gray-600'}>
-                        {feature}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-                
-                <button
-                  onClick={() => scrollToSection('contact')}
-                  className={`w-full py-3 px-6 rounded-lg font-semibold transition-colors duration-200 ${
-                    plan.popular
-                      ? 'bg-blue-600 hover:bg-blue-700 text-white'
-                      : plan.isCustom
-                      ? 'bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white'
-                      : isDarkMode
-                      ? 'bg-gray-700 hover:bg-gray-600 text-white'
-                      : 'bg-gray-100 hover:bg-gray-200 text-gray-900'
-                  }`}
-                >
-                  {plan.isCustom ? 'Discuss Project' : 'Get Started'}
-                </button>
-              </div>
-            ))}
           </div>
         </div>
       </section>
